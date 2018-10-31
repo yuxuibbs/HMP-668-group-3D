@@ -1,0 +1,22 @@
+<!DOCTYPE html lang="en">
+<html>
+<head>
+    <title>HMP 668 Group 3D</title>
+    <script type="text/javascript">
+        function submitForm() {
+            document.getElementById("result").innerHTML = document.lipidForm.test.value;
+        }
+    </script>
+</head>
+<body>
+    <h1>Lipid model</h1>
+    <p>Based on the paper "Cardiovascular risk prediction models for people with severe mental illness: results from the prediction and management of cardiovascular risk in people with severe mental illnesses (PRIMROSE) research program" in JAMA psychiatry by Osborn DP, Hardoon S, Omar RZ, Holt RI, King M, Larsen J, Marston L, Morris RW, Nazareth I, Walters K, Petersen I <a href="https://www.ncbi.nlm.nih.gov/pubmed/25536289">here</a></p>
+    <form name="lipidForm">
+        <p>test: </p>
+        <input type="text" name="test">
+        <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+</body>
+</html>
