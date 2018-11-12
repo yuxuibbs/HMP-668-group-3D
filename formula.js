@@ -28,12 +28,14 @@ function getCVDRiskLipid(obj){
 
 prompt.start();
 
+// TODO: CHECK THE TYPES OF EACH INPUT
+
 prompt.get([{
             name: 'gender',
             // 1 if female, 0 if male
-            description: 'Gender',
-            type: 'string',
-            required: true 
+            description: 'Gender. Please enter "true" for female and "false for male',
+            type: 'boolean',
+            required: true
         }, {
             name: 'age',
             description: 'Age in years',
@@ -46,132 +48,131 @@ prompt.get([{
             required: true
         }, {
             name: 'hyp',
-            description: 'Use antihypertensives?', // 1 if yes, 0 if no
-            type: '',
+            description: 'Use antihypertensives? Please enter "true" or "false"', // 1 if yes, 0 if no
+            type: 'boolean',
             required: true
         }, {
             name: 'chol',
             description: 'Total cholesterol in mmol/L',
-            type: '',
+            type: 'float',
             required: true
         }, {
             name: 'hdl',
             description: 'HDL cholesterol in mmol/L',
-            type: '',
+            type: 'float',
             required: true
         }, {
             name: 'wt',
             description: 'Weight in kg',
-            type: '',
+            type: 'float',
             required: true
         }, {
             name: 'ht',
             description: 'Height in cm',
-            type: '',
+            type: 'float',
             required: true
         }, {
             name: 'dm',
-            description: 'Diabetes?', // 1 if yes, 0 if no
-            type: '',
+            description: 'Diabetes? Please enter "true" or "false"', // 1 if yes, 0 if no
+            type: 'boolean',
             required: true
         }, {
             name: 'ex',
-            description: 'Former smoker?',
-            type: '',
+            description: 'Former smoker? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'curr',
-            description: 'Current smoker?',
-            type: '',
+            description: 'Current smoker? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'dep',
-            description: 'Use antidepressants?',
-            type: '',
+            description: 'Use antidepressants? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'alc',
-            description: 'History of heavy drinking?',
-            type: '',
+            description: 'History of heavy drinking? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 't2',
-            description: 'Townsend quintile 2?',
-            type: '',
+            description: 'Townsend quintile 2? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 't3',
-            description: 'Townsend quintile 3?',
-            type: '',
+            description: 'Townsend quintile 3? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 't4',
-            description: 'Townsend quintile 4?',
-            type: '',
+            description: 'Townsend quintile 4? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 't5',
-            description: 'Townsend quintile 5?',
-            type: '',
+            description: 'Townsend quintile 5? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'bip',
-            description: 'Has bipolar disorder?',
-            type: '',
+            description: 'Has bipolar disorder? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'oth',
-            description: 'Has psychosis other than schizophrenia or bipolar disorder?',
-            type: '',
+            description: 'Has psychosis other than schizophrenia or bipolar disorder? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'reg',
-            description: 'Unspecified SMI but has been added to SMI register?',
-            type: '',
+            description: 'Unspecified SMI but has been added to SMI register? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'atyp',
-            description: 'Use second generation antipsychotics?',
-            type: '',
+            description: 'Use second generation antipsychotics? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'typ',
-            description: 'Use first generation antipsychotics?',
-            type: '',
+            description: 'Use first generation antipsychotics? Please enter "true" or "false"',
+            type: 'boolean',
             required: true
         }, {
             name: 'cal',
             description: 'Calendar year',
-            type: '',
+            type: 'integer',
             required: true
         }], function (err, result) {
 
-    var inputs = {'gender': result.gender, 
+    var inputs = {'gender': result.gender,
                   'age': result.age,
-                  'sbp': result.sbp, 
-                  'hyp': result.hyp, 
-                  'chol': result.chol, 
+                  'sbp': result.sbp,
+                  'hyp': result.hyp,
+                  'chol': result.chol,
                   'hdl': result.hdl,
-                  'wt': result.wt, 
-                  'ht': result.ht, 
-                  'dm': result.dm, 
-                  'ex': result.ex, 
-                  'curr': result.curr, 
-                  'dep': result.dep, 
+                  'wt': result.wt,
+                  'ht': result.ht,
+                  'dm': result.dm,
+                  'ex': result.ex,
+                  'curr': result.curr,
+                  'dep': result.dep,
                   'alc': result.alc,
-                  't2': result.t2, 
-                  't3': result.t3, 
-                  't4': result.t4, 
-                  't5': result.t5, 
-                  'bip': result.bip, 
-                  'oth': result.oth, 
+                  't2': result.t2,
+                  't3': result.t3,
+                  't4': result.t4,
+                  't5': result.t5,
+                  'bip': result.bip,
+                  'oth': result.oth,
                   'reg': result.reg,
-                  'atyp': result.atyp, 
-                  'typ': result.typ, 
+                  'atyp': result.atyp,
+                  'typ': result.typ,
                   'cal': result.cal
                   };
 
     var output = getCVDRiskLipid(inputs);
     console.log(output);
 });
-
