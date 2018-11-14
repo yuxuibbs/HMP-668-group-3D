@@ -29,6 +29,8 @@ function getCVDRiskLipid(obj){
 prompt.start();
 
 // TODO: CHECK THE TYPES OF EACH INPUT
+// apparently there is only one type of number in JS, and it's just... number?
+// integer was working as a type but float wasn't
 
 prompt.get([{
             name: 'gender',
@@ -39,12 +41,12 @@ prompt.get([{
         }, {
             name: 'age',
             description: 'Age in years',
-            type: 'integer',
+            type: 'number',
             required: true
         }, {
             name: 'sbp',
             description: 'Systolic Blood Pressure in mmHg',
-            type: 'integer',
+            type: 'number',
             required: true
         }, {
             name: 'hyp',
@@ -54,22 +56,22 @@ prompt.get([{
         }, {
             name: 'chol',
             description: 'Total cholesterol in mmol/L',
-            type: 'float',
+            type: 'number',
             required: true
         }, {
             name: 'hdl',
             description: 'HDL cholesterol in mmol/L',
-            type: 'float',
+            type: 'number',
             required: true
         }, {
             name: 'wt',
             description: 'Weight in kg',
-            type: 'float',
+            type: 'number',
             required: true
         }, {
             name: 'ht',
             description: 'Height in cm',
-            type: 'float',
+            type: 'number',
             required: true
         }, {
             name: 'dm',
@@ -144,7 +146,7 @@ prompt.get([{
         }, {
             name: 'cal',
             description: 'Calendar year',
-            type: 'integer',
+            type: 'number',
             required: true
         }], function (err, result) {
 
