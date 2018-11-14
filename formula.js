@@ -5,7 +5,7 @@ function getCVDRiskLipid(obj){
 
     // TODO: DOUBLE CHECK FORMULA
     var exponentSum  =
-    -0.1795*obj['gender'] + 3.78124*(Math.log10(obj['age'] - 3.853361))
+    -0.1795*obj['gender'] + 3.78124*(Math.log10(obj['age']) - 3.853361)
     + 0.007651*(obj['sbp']-129.8673) + 0.625719*obj['hyp'] - 0.00796*obj['hyp']
     * (obj['sbp'] - 129.8673) + 0.11763*(obj['chol']-5.562413) - 0.8183*(obj['hdl']-1.389071)
     + 0.37734*obj['dm']
