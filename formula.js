@@ -2,7 +2,7 @@ var prompt = require('prompt');
 
 
 function getCVDRiskLipid(obj){
-
+    console.log(obj);
     // TODO: DOUBLE CHECK FORMULA
     var exponentSum  =
     -0.1795*obj['gender'] + 3.78124*(Math.log10(obj['age']) - 3.853361)
@@ -14,9 +14,9 @@ function getCVDRiskLipid(obj){
     + 0.22126*obj['t5'] + 0.11177*obj['bip']
     + 0.21004*obj['oth'] + 0.01526*obj['reg'] + 0.12121*obj['atyp'];
 
-    var S = 0.968011
+    var S = 0.968011;
 
-    var riskscore = 100 * (1 - Math.pow(S, Math.exp(exponentSum)))
+    var riskscore = 100 * (1 - Math.pow(S, Math.exp(exponentSum)));
 
     return riskscore;
 }
