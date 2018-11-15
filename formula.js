@@ -65,7 +65,13 @@ function getCVDRiskDesk(obj){
     return riskscore;
 }
 
-
+console.log("\nWelcome to the PRIMROSE CVD Risk Prediction Calculator!\n");
+console.log("===========================================");
+console.log("NOTE:\nPlease press the 'return' key on your keyboard when prompted for values that aren't required for a certain model.\n");
+console.log("Variables not required for the PRIMROSE lipid model: weight, height, and whether the patient uses first generation antipsychotics.");
+console.log("Variables not required for the PRIMROSE BMI model: total cholesterol and HDL cholesterol.\n");
+console.log("If you choose to use both the PRIMROSE lipid and BMI models, please enter valid inputs for each item you are prompted for.");
+console.log("===========================================\n");
 
 prompt.start();
 
@@ -74,10 +80,10 @@ prompt.get(
         [{
             // ask user which model(s) they want to use
             name: 'model',
-            description: 'PRIMROSE lipid model, desk model, or both? Please enter "lipid", "desk", or "both")',
+            description: 'Would you like to use the PRIMROSE lipid model, BMI model, or both? Please enter "lipid", "bmi", or "both"',
             type: 'string',
             required: true
-        }, 
+        },
         // rest of the inputs for the formulas
         {
             name: 'gender',
@@ -97,29 +103,29 @@ prompt.get(
             required: true
         }, {
             name: 'hyp',
-            description: 'Use antihypertensives? Please enter "true" or "false"', 
+            description: 'Use antihypertensives? Please enter "true" or "false"',
             type: 'boolean',
             required: true
         }, {
             name: 'chol',
             description: 'Total cholesterol in mmol/L',
             type: 'number',
-            required: true
+            required: false
         }, {
             name: 'hdl',
             description: 'HDL cholesterol in mmol/L',
             type: 'number',
-            required: true
+            required: false
         }, {
             name: 'wt',
             description: 'Weight in kg',
             type: 'number',
-            required: true
+            required: false
         }, {
             name: 'ht',
             description: 'Height in cm',
             type: 'number',
-            required: true
+            required: false
         }, {
             name: 'dm',
             description: 'Diabetes? Please enter "true" or "false"',
@@ -189,14 +195,14 @@ prompt.get(
             name: 'typ',
             description: 'Use first generation antipsychotics? Please enter "true" or "false"',
             type: 'boolean',
-            required: true
+            required: false
         }, {
             name: 'cal',
             description: 'Calendar year',
             type: 'number',
             required: true
         }], function (err, result) {
-    
+
     // store user inputs
     var inputs = {'gender': result.gender,
                   'age': result.age,
@@ -225,14 +231,17 @@ prompt.get(
 
     // call relevant functions and do some error checking
     if (result.model == "lipid") {
-        console.log("Lipid: " + getCVDRiskLipid(inputs));
+        console.log("\nResults:");
+        console.log("PRIMROSE Lipid Risk Prediction: " + getCVDRiskLipid(inputs).toFixed(2) + "%");
     }
-    else if (result.model == "desk") {
-        console.log("Desk: " + getCVDRiskDesk(inputs));
+    else if (result.model == "bmi") {
+        console.log("\nResults:");
+        console.log("PRIMROSE BMI Risk Prediction: " + getCVDRiskDesk(inputs).toFixed(2) + "%");
     }
     else if (result.model == "both") {
-        console.log("Lipid: " + getCVDRiskLipid(inputs));
-        console.log("Desk: " + getCVDRiskDesk(inputs));
+        console.log("\nResults:");
+        console.log("PRIMROSE Lipid Risk Prediction: " + getCVDRiskLipid(inputs).toFixed(2) + "%");
+        console.log("PRIMROSE BMI Risk Prediction: " + getCVDRiskDesk(inputs).toFixed(2) + "%");
     }
     else {
         console.log("Invalid input. Exit and start over.")
