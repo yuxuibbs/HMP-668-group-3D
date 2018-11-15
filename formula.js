@@ -74,6 +74,11 @@ prompt.start();
 // integer was working as a type but float wasn't
 
 prompt.get([{
+            name: 'model',
+            description: 'PRIMROSE lipid model, desk model, or both? Please enter "lipid", "desk", or "both")',
+            type: 'string',
+            required: true
+        }, {
             name: 'gender',
             // 1 if female, 0 if male
             description: 'Gender. Please enter "true" for female and "false for male',
@@ -215,7 +220,17 @@ prompt.get([{
                   'typ': result.typ,
                   'cal': result.cal
                   };
-
-    var output = getCVDRiskLipid(inputs);
-    console.log(output);
+    if (result.model == "lipid") {
+        console.log("Lipid: " + getCVDRiskLipid(inputs));
+    }
+    else if (result.model == "desk") {
+        console.log("Desk: " + getCVDRiskDesk(inputs));
+    }
+    else if (result.model == "both") {
+        console.log("Lipid: " + getCVDRiskLipid(inputs));
+        console.log("Desk: " + getCVDRiskDesk(inputs));
+    }
+    else {
+        console.log("Invalid input. Exit and start over.")
+    }
 });
